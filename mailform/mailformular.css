@@ -1,0 +1,33 @@
+body	{
+	margin: 2%;
+}
+form	{
+	width:	50%;
+	max-width: 600px;
+}
+input, textarea, button	{
+	margin: 3px 40px 10px 0;
+	padding: 1px 0 1px 5px;
+	display: block;
+}
+button, .formtext 	{
+	margin: 20px 108px ;
+	padding: 5px 10px;
+}
+label 	
+	{
+	text-align: right;
+	padding: 1px 5px;
+	width: 100px;
+	float: left;
+}
+#phptest_versenkung 	{
+	display: none;
+}
+.phptest_fehlermeldung, .meldung {
+	color:	red;
+	font-weight:	bold;
+}
+.formtext	{
+	padding: 0;
+}

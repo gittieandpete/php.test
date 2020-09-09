@@ -1,0 +1,7 @@
+<?php
+print '<select name="leute">';
+for ($i = 1; $i <= 10; $i++) {
+    print "<option>$i</option>";
+}
+print '</select>';
+?>

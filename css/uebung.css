@@ -1,0 +1,310 @@
+a:link
+	{
+	color:	blue;
+	text-decoration:	none;
+}
+a:visited
+	{
+	color:	purple;
+}
+a:hover
+	{
+	color:	red;
+	text-decoration:	underline;
+}
+
+body
+	{
+	font-family:	"Trebuchet MS", sans-serif;
+	color:	#000;
+	background:	#fff;
+	margin:	0;
+	padding:	2% 4%;
+}
+h1.logo
+	{
+	font-size:	160%;
+	font-variant:	small-caps;
+	letter-spacing:	5px;
+}
+pre
+	{
+	margin:	2px;
+	padding:	0;
+}
+table
+	{
+	border-collapse:	collapse;
+}
+table.rahmen
+	{
+	margin-top:	30px;
+}
+.kopfzeile > table
+	{
+	width:	100%;
+}
+td.kopf
+	{
+	width:	50%
+}
+td.kopf form
+	{
+	width:	100%;
+}
+.mysql_out td, .mysql_out th
+	{
+	padding:	5px;
+	border:	1px solid #778899;
+}
+th, td
+	{
+	vertical-align:	top;
+	text-align:	left;
+}
+ul
+	{
+	list-style-type:	none;
+}
+#fusszeile
+	{
+	margin:	27px 0 0 0;
+	border-top:	1px solid #707070;
+}
+#fusszeile table
+	{
+	width:	90%;
+	margin:	1% auto;
+}
+#fusszeile td
+	{
+	text-align:	center;
+	font-size:	110%;
+}
+#linkliste
+	{
+	color:	#000;
+	background-color:	#ECECEC;
+	float:	right;
+	width:	160px;
+	border-right:	1px solid #707070;
+	border-bottom:	1px solid #707070;
+}
+#outer
+	{
+	max-width:	1100px;
+	margin:	auto;
+	padding-bottom:	1%;
+	color:	#000;
+	background-color:	#fff;
+}
+.aktuell, li.aktuell, .meldung
+	{
+	color:	red;
+}
+.csv-data {
+	font-size:	80%;
+}
+.csv-data tr:first-child {
+	color:	red;
+	font-weight:	bold;
+	border-bottom: 1px solid silver;
+}
+.menu li.aktuell, .sub li.aktuell
+	{
+	border:	none;
+}
+.alt
+	{
+	background:	#ECECEC;
+}
+.angebote
+	{
+	border:	1px solid #000;
+}
+.daten, .rahmen
+	{
+	border-collapse:	collapse;
+	empty-cells:	show;
+}
+.daten td, .daten th
+	{
+	text-align:	right;
+	vertical-align:	top;
+	padding:	3px;
+	border:	1px solid #000;
+}
+.fehlersuche
+	{
+	background: yellow;
+}
+table.kakuro
+	{
+	float:	left;
+	margin:	0 7px 0 0;
+}
+table.kakurobreak
+	{
+	clear:	both;
+}
+.kakuro td, .kakuro4 td, .kakuro4 th
+	{
+	text-align:	center;
+	padding:	2px;
+	border:	1px solid #e0e0e0;
+}
+.kopfzeile
+	{
+	margin:	0 0 27px 0;
+	padding:	0 0 27px 0;
+	border-bottom:	1px solid #707070;
+}
+.meldung, .domain_meldung
+	{
+	color:	red;
+	font-weight:	bold;
+}
+.menu
+	{
+	margin:	0px;
+	padding:	0px;
+}
+.sub
+	{
+	margin:	0px;
+	padding:	0px 0px 0px 15px;
+}
+.menu li
+	{
+	margin:	4px 4px 0 4px;
+	padding:	0 0 0 2px;
+	font-size:	80%;
+	border-right:	1px solid #707070;
+}
+.sub li
+	{
+	font-size:	100%;
+}
+.menu a
+	{
+	background-color:	#fff;
+	padding:	0 0 0 5px;
+	display: 	block;
+	width:	96%;
+}
+.menu a:visited
+	{
+	text-decoration:	none;
+}
+.menu a:hover
+	{
+	background-color:	#ECECEC;
+	text-decoration:	none;
+}
+.rahmen td, .rahmen th
+	{
+	padding:	3px;
+	border:	1px solid silver;
+}
+.rechts
+	{
+	float:	right;
+}
+.rot
+	{
+	color:	red;
+}
+.zentriert
+	{
+	text-align:	center;
+}
+/*-------------------------------------
+fuer Syntax-Highlighting
+-------------------------------------*/
+.tag
+	{
+	color:	blue;
+}
+.attr
+	{
+	color:	lightseagreen;
+}
+.comment
+	{
+	color:	fuchsia;
+}
+
+/*-------------------------------------
+
+Merz-CSS für die Tabellen und Produktabfrage
+-------------------------------------*/
+
+table.baujahr
+	{
+	border:	1px solid silver;
+}
+.bjgrau td
+	{
+	background-color: 	#ECECEC;
+}
+.bjweiss td
+	{
+	background:	#fff;
+}
+.bjfirma td
+	{
+	color:	#eee;
+	background-color: 	#0B3080;
+	font-weight:	bold;
+	text-align:	center;
+	vertical-align:	middle;
+	height:	40px;
+	border:	1px solid #0B3080;
+}
+.bjinnen
+	{
+	width:	100%;
+	margin:	0;
+	padding:	0;
+}
+.bjinnen td
+	{
+	width:	99px;
+	text-align:	center;
+	border-right:	1px solid silver;
+}
+.bjkopf
+	{
+	width:	100px;
+	text-align:	center;
+	border-bottom:	1px solid silver;
+	border-top:	1px solid silver;
+}
+.bjleiste
+	{
+	width:	16px;
+	background-color: 	#fff;
+	border-bottom:	1px solid silver;
+	border-top:	1px solid silver;
+}
+.bjscroll
+	{
+	height:	200px;
+	overflow:	auto;
+	display:	block;
+	margin:	-2px -1px;
+}
+.kasten
+	{
+	width:	60%;
+	font-size:	90%;
+	text-align:	justify;
+}
+.wrap
+	{
+	clear:	right;
+	border-top:	1px solid #707070;
+	margin-top:	27px;
+	margin-bottom:	27px;
+	padding-top:	14px;
+}

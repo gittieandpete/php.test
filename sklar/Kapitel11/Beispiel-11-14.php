@@ -1,0 +1,1 @@
+$xml = simplexml_load_file('speisekarte.xml');

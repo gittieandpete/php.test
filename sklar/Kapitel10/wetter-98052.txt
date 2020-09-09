@@ -1,0 +1,33 @@
+<table cellspacing="0" cellpadding="3" border="0" width="326">
+	<tr>
+	<td><a name="contents"></a> <b>Tonight</b>. Mostly clear. Patchy fog after midnight. Lows in the mid
+50s. Light wind. <br><br>
+<b>Tuesday</b>. Areas of morning clouds and patchy fog. Otherwise mostly 
+sunny. Highs in the mid 70s. Light wind becoming west around 10 mph 
+in the afternoon. <br><br>
+<b>Tuesday night</b>. Mostly cloudy. Chance of showers after midnight.
+Lows in the mid 50s. Light wind. <br><br>
+<b>Wednesday</b>. Showers likely. Isolated thunderstorms in the 
+afternoon. Mainly north. Highs in the upper 60s. Light wind 
+becoming west around 10 mph in the afternoon. <br><br>
+<b>Wednesday night</b>. Mostly cloudy. Chance of showers. Isolated 
+thunderstorms in the evening mainly north. Lows in the lower 50s. 
+Light wind becoming southwest around 10 mph after midnight. <br><br>
+<b>Thursday</b>. Morning clouds. Becoming partly sunny. Chance of
+showers. Highs in the upper 60s. <br><br>
+<b>Thursday night and Friday</b>. Mostly cloudy. Chance of showers. Lows 
+in the lower 50s. Highs in the lower 70s. <br><br>
+<b>Friday night</b>. Partly cloudy. Chance of showers. Lows in the lower 
+50s. <br><br>
+<b>Saturday and Saturday night</b>. Partly cloudy. Highs in the mid 70s. 
+Lows in the mid 50s. <br><br>
+<b>Sunday through labor day</b>. Partly cloudy. Highs in the 70s. Lows in
+the mid 50s. <br>&&
+                 temperature         /       precipitation        
+gold bar          56   78   56   67  /   0   10   30   60 
+enumclaw          55   77   55   68  /   0   10   30   60 
+north bend        56   76   57   66  /   0   10   30   60 
+<br><br>
+</td>
+	</tr>
+	</table>

@@ -1,0 +1,12 @@
+Beipsiel B-01: Gierige und nicht-gierige Mustervergleiche
+Beispiel B-02: Vergleiche mit preg_match()
+Beispiel B-03: Einfangen mit preg_match()
+Beispiel B-04: Einfangen mit geschachtelten Klammern
+Beispiel B-05: Vergleichen mit preg_match_all()
+Beispiel B-06: Vergleichen mit Rückwärtsreferenzen
+Beispiel B-07: Ersetzen mit preg_replace()
+Beispiel B-08: Ersetzen mit Rückwärtsreferenzen
+Beispiel B-09: preg_split() verwenden
+Beispiel B-10: Die Anzahl der Elemente einschrängen, die von preg_split() zurückgeliefert werden
+Beispiel B-11: Bei preg_split() leere Elemente verwerfen
+Beispiel B-12: preg_grep() verwenden

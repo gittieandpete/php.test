@@ -1,0 +1,102 @@
+
+Nehmen wir mal an, es handelt sich um ein Email-Formular, mit dessen
+Hilfe ein Besucher dem Websitebetreiber eine Nachricht zukommen lassen
+kann. Sehr verbreitet. Die vom User eingegebene Email wird als
+Absenderadresse hinzugefügt, damit man auf die Email direkt antworten
+kann. Z.B. so:
+
+$ret = mail(
+   '<self@example.org>',
+   'Email via Web-Formular',
+   $nachricht,
+   "From: \"$name\" <$from>");
+
+Wenn man nun keinerlei Syntaxüberprüfung für $name und $from vornimmt,
+dann lässt man damit z.B. folgendes Gebilde als Adresseingabe zu:
+
+($_POST['from']:)
+
+"any@example.org>\r\n" .
+"BCC: <a@example.org>;<b@example.org>;<c@example.org>\r\n" .
+"Subject: SpamTitle\r\n\r\n" .
+"Spambody\r\n\<any@example.org";
+
+Ein Spambot kann nun hunderte zieladressen in der BCC-Zeile angeben,
+sein eigenes Subject und einen beliebigen Spam-Text. Dieses Formular
+macht die Kiste also zu einer Spam-Schleuder. Es gibt sogar Bots, die
+vollautomatisch solche Formulare daraufhin testen, ob man sie dazu
+mißbrauchen kann, und welche Methode der Parameter-Manipulation
+anzuwenden ist.
+
+_____________
+
+Wie kann ich effektiv Formularspam verhindern? 	
+
+Aus gegebenem Anlass fasse ich mal zusammen, wie man effektiv Formularspam verhindern kann, ohne den Komfort für die Benutzer einzuschränken. 
+
+
+1. Aus Subject, From und To unbedingt die Zeilenumbrüche entfernen 
+
+s/[\r\n]//g 
+
+
+2. Alle Felder unbedingt auf Plausibilität prüfen. 
+
+Im Zeitalter der regulären Ausdrücke sollte das kein Problem sein. 
+
+Einige Beispiele: 
+
+email prüfen: /^([a-zA-Z0-9\-\.\_]+)@([a-zA-Z0-9\-\.]+\.[a-zA-Z]{2, 4})$/ 
+Telefonnummer prüfen: /[\d-\/()+\/ ]+/ 
+
+3. HTTP-Header auf Existenz/Gültigkeit prüfen 
+
+HTTP_USER_AGENT 
+HTTP_ACCEPT 
+HTTP_ACCEPT_LANGUAGE 
+HTTP_ACCEPT_CHARSET 
+
+4. Ein Zeitfenster bestimmen, in dem die Formulardaten gültig sind. 
+
+In einem HIDDEN-Feld wird beim Formularaufruf ein Zeitstempel mitgeschickt. 
+Dieser wird beim Empfang der Daten überprüft. Es müssen sowohl eine Mindestzeit als auch eine Maximalzeit abgeprüft werden. 
+(Nach meinen Erfahrungen ist als Mindestzeit 8 Sekunden und als Maximalzeit 20 Minuten ausreichend) 
+
+5. Mehrfaches Abschicken von Formularen verhindern. 
+
+Mit einem zusätzlichen HIDDEN-Feld eine UNIQUE_ID mitschicken und beim Empfang 
+prüfen, ob diese Formular-ID schon verarbeitet wurde. 
+
+6. Punkt 4 und 5 sollten kombiniert werden. 
+
+und bei jeder Scriptinstallation geringfügig variieren. Damit wird automatischer Spam ganz erheblich erschwert. 
+
+7. Keine E-Mail Adressen in HIDDEN-Feldern übergeben. 
+
+Das sollte selbstverständlich sein. 
+
+8. Ausschließlich nur POST Variablen verarbeiten. 
+
+Das sollte selbstverständlich sein. 
+
+9. Wenn möglich, nur eingeloggte Benutzer zulassen 
+
+Das ist nicht immer realisierbar, sollte aber bevorzugt werden. 
+
+
+10. Eine Kopie der Fehlversuche an einen Überwachungsaccount senden. 
+
+Damit besteht die Möglichkeit, zu erkennen, wenn Spamversuche stattfinden. 
+Gegebenenfalls können die betreffenden IP-Nummern rechtzeitig gesperrt werden. 
+
+Alle Punkte ergeben, zusammen angewendet, ein sehr hohes Maß an Schutz. 
+
+Update: 
+In der Zwischenzeit sind noch einige pfiffige Tricks dazugekommen 
+
+11. Trigger einbauen 
+Bei der Formularauswertung wird geprüft, ob in einem bestimmten Zeitraum eine vorgegebene Seite aufgerufen wurde. Wenn nicht, ist es ein untrügliches Anzeichen für einen Spider/Bot. 
+
+12. Anbieten einer Vorschau 
+Automatische Spider können nicht unterscheiden, welcher Button das endgültige Abschicken auslöst. 
+So wird immer nur die Vorschau aufgerufen und damit keine weitere Wirkung erzielt.

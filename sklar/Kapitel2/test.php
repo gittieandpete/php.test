@@ -1,0 +1,11 @@
+<?php
+
+$äöu = array("äöu" => "umls",
+             "hal" => "rien");
+             
+print "Manchmal mit $äöu[äöu] und manchmal $äöu[hal]";
+
+$aläöüßÖÄÜ = "hallo";
+print $aläöüßÖÄÜ;
+
+?>

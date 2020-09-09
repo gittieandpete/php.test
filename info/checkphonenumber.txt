@@ -1,0 +1,240 @@
+Betreff:
+Re: Inhalt eines Angabefeldes als Email versenden
+Von:
+Ulf Kadner <dr_logic@gmx.net>
+Datum:
+Fri, 06 May 2011 15:21:26 +0200
+Newsgruppen:
+de.comp.lang.php
+Path:
+newsspool3.arcor-online.net!newsspool1.arcor-online.net!newsspool3.arcor-online.net!newsfeed.arcor.de!fu-berlin.de!uni-berlin.de!individual.net!not-for-mail
+Newsgruppen:
+de.comp.lang.php
+Zeilen:
+219
+Nachricht-ID:
+<92iaueFngbU1@mid.individual.net>
+Referenzen:
+<92him7Fr30U1@mid.uni-berlin.de>
+MIME-Version:
+1.0
+Content-Type:
+text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding:
+8bit
+X-Trace:
+individual.net YWZk3z/RTeTeOfgQcH8NJAm1gCDcJyv1D9OYXWaRx7pucSk1GE
+Cancel-Lock:
+sha1:vwjYN+iig6LZuJPmfZRd0kuiqOU=
+User-Agent:
+Mozilla/5.0 (Windows; U; Windows NT 6.1; de; rv:1.9.2.15) Gecko/20110303 Mnenhy/0.8.3 Thunderbird/3.1.9
+In-Reply-To:
+<92him7Fr30U1@mid.uni-berlin.de>
+Xref:
+newsspool3.arcor-online.net de.comp.lang.php:167
+
+Am 06.05.2011 08:27, schrieb Joerg Klein:
+
+> error_reporting(E_ALL | E_STRICT);
+> ini_set('display_errors', 'On');
+
+Diese Angabe ist gewöhnlich nicht sinnvoll. Weil man Scripte im Normalfall in einer Entwicklungsumgebung programmiert und testet in der diese Einstellungen ohnehin gesetzt sein sollten.
+
+Bitte nicht Code auf einem produktiven System (öffentlich erreichbarer Webserver) entwickeln! Das ist ein absolutes NoGo!
+
+> $err = ''; // Variable für die Fehlerausgabe
+> $success = ''; // Variable für die Ausgabe der Erfolgsmeldung
+>
+> // Überprüfung der Benutzereinagben
+> if (isset($_POST['senden'])) {
+
+Ab hier hab ich für Dich mal die Einrückung gemacht. Bitte zukünftig immer selber machen. Das erhöht die Lesbarkeit des Codes wesentlich!
+
+>     $eingabe = array(); // zum abspeichern überprüfter Benutzereingaben
+>     $error = array(); // zum merken von fehlerhaften Benutzereingaben
+>     if (isset($_POST['telefon']) &&
+>         strlen(trim($_POST['telefon'])) > 4 &&
+>         is_numeric($_POST['telefon']))
+>     {
+
+Die Prüfung ob es eine Telefonnummer im gültigen Format ist, ist falsch!
+Hier mal ein Beispiel mit Deinem is_numeric, angewendet auf
+ausschließlich Nummern in gültigen Telefonnummerformaten:
+
+$nummern = array(
+    '+49 30 4557454548',
+    '030-52487851',
+    '(030) 12345-67',
+    '34934-12',
+    '5248561');
+foreach ( $nummern as $nummer )
+{
+    echo '"', $nummer, '" ist ',
+         (\is_numeric($nummer) ? 'gültig' : 'ungültig'), "\n";
+}
+
+Die einzige so als korrekt erkannte Nummer ist die letzte.
+
+Wie DU hier erkennen kannst können Telefonnummern in sehr
+unterschiedlichen Formaten vorliegen. Es wäre absolut falsch hier zu sagen "Mehr als Zahlen kommen nicht vor" denn was Dir im Moment
+als ausreichend erscheint ist nichts weiter als eine Selbstbeschränkung ohne erkennbaren Sinn! Aber mach Dir keinen Kopf. Derartige Dinge passieren Laien oder Anfängern oft.
+
+Wichtigste Grundregel wenn man etwas prüfen will:
+
+- Informiere Dich über alle möglichen Formate die ein zu prüfendes
+  Element haben darf und baue dannach entsprechend Deinen Erkenntnissen
+  die jeweilige Prüfroutine auf.
+
+Das kann, abhängig vom zu prüfenden ELementtype auch mal etwas umfangreicher werden klar. Aber Programmierung bedeutet ja nicht das
+man alles ohne großen Aufwand erreichen kann.
+
+Zur Lösung:
+
+Entsprechend http://de.wikipedia.org/wiki/Rufnummer#Schreibweisen
+kann eine Rufnummer nicht mehr als 15 Ziffern haben und sollte in
+einem der folgenden Formate vorliegen.
+
++49 30 1234567
++49 30 12345-67
++49 (30) 1234567
++49-30-1234567
++49 (0)30 12345-67
+030 12345-67
+(030) 12345 67
+0900 5 123456
+
+Wobei die Landesvorwahl optional ist und in dieser kann das Pluszeichen
+auch optional durch zwei Nullen ersetzt werden.
+
+Je nach Kontext kann auch die Ortsvorwahl weggelassen werden aber das
+sollte man eigentlich vermeiden da diese Informationen dann meist
+standortabhängig sind was nicht sinnvoll ist.
+
+Das sind jetzt schon so einige Informationen die es umzusetzen gilt.
+
+Faule Kollegen prüfen jetzt nur mit einem regulären Ausdruck ob nur die
+festgelegen Zeichen enthalten sind. Aber das bringt letztendlich nix da
+diese Information wertlos ist.
+
+Landesvorwahl
+¯¯¯¯¯¯¯¯¯¯¯¯¯
+Eine Telefonnummer kann mit einer _optionalen_ Landesvorwahl beginnen.
+Diese wiederum beginnt mit einem + oder zwei Nullen, gefolgt von 1-5 Zeichen. Bei 1-4 Folgezeichen dürfen nur Zahlen definiert sein wobei
+bei einem Zeichen nur die 7 genutzt werden darf und bei 4 Zeichen nur
+3906 (Vorwahl Vatikan). Bei 5 Folgezeichen (Nordamerikanische Nummern)
+muss das 2. Zeichen ein Whitespacezeichen sein und das erste die Ziffer
+1.
+<URL:http://de.wikipedia.org/wiki/L%C3%A4ndervorwahlliste_sortiert_nach_Nummern>
+
+Das als Regex-Teil würde dann so aussehen:
+
+^(\+|00)(7|\d{2,3}|3906|1\s\d{3})
+
+Ortvorwahl
+¯¯¯¯¯¯¯¯¯¯
+Das Format der Ortvorwahl ist erstmal abhängig davon ob eine
+Landesvorwahl definiert ist oder nicht. Ist diese definiert so darf die
+Ortvorwahl nicht mit einer Null beginnen oder diese führende Null muss
+von runden Klammern umschlossen sein. Ist keine Landesvorwahl definiert
+muss die Ortvorwahl mit einer Null beginnen. In beiden Fällen kann die
+Vorwahl von runden Klammern umschlossen sein.
+Als Trennzeichen zwischen Landes und Ortvorwahl wird ein Leerzeichen
+oder ein Bindestrich genutzt.
+
+Mit Landesvorwahl:
+[ -]((\(0\))?[1-9]\d{0,5}|\([1-9]\d{0,5}\))
+
+Ohne Landesvorwahl:
+(0[1-9]\d{0,5}|\(0[1-9]\d{0,5}\))
+
+Rufnummer
+¯¯¯¯¯¯¯¯¯
+Die Rufnummer selbst muss mit mind. 3-6 Ziffern beginnen, denen optional
+0-4 Ziffern folgen dürfen (Unterstelle) die mit Leerzeichen oder
+Bindestrich von der Hauptnummer getrennt sein _können_
+
+[1-9]\d{2,5}([ -]?\d{1,4})?$
+
+Das Ganze könnte man in der folgenden Funktion zusammenfassen:
+
+function checkPhoneNumber( $number )
+{
+    if ( \is_null($number) ) return false;
+    $number = \trim( $number );
+    $len    = \strlen( $number );
+    if ( $len < 7 ) return false;
+    if ( $len > 20 ) return false;
+    if ( \preg_match('~^(\+|00)(7|\d{2,3}|3906|1\s\d{3})[ -](.+)$~',
+                     $number, $matches) )
+    {   # Landesvorwahl ist definiert
+        # $tmp bekommt alles nach Landesvorwahl
+        $tmp = \trim( $matches[3] );
+        if ( !\preg_match(
+             '~^((\(0\))?[1-9]\d{0,5}|\([1-9]\d{0,5}\))[ -]~',
+             $tmp, $matches1) )
+        {
+            return false;
+        }
+        # $tmp enthält jetzt nur noch die Rufnummer
+        $tmp = \trim( \substr($tmp, \strlen($matches1[0])) );
+    }
+    else
+    {   # Es ist keine Landesvorwahl definiert
+        if ( !\preg_match(
+             '~^(0[1-9]\d{0,5}|\(0[1-9]\d{0,5}\))[ -]~',
+             $number, $matches) )
+        {
+            return false;
+        }
+        # $tmp enthält jetzt nur noch die Rufnummer
+        $tmp = \trim( \substr($number, \strlen($matches[0])) );
+    }
+    return (bool)\preg_match(
+        '~^(\d[ -])?[1-9]\d{2,5}([ -]?\d{1,4})?$~', $tmp);
+}
+
+Das würde dann wie folgt in Deinen Code integriert werden:
+
+if ( isset($_POST['telefon']) &&
+     \checkPhoneNumber($_POST['telefon']) )
+{
+    $eingabe['telefon'] = \trim( $_POST['telefon'] );
+}
+else
+{
+    $error['telefon'] = 'DIe Telefonnummer ist ungültig im Format!';
+}
+
+>     if (empty($error)) {
+>         exit();
+>     }
+
+Wenn $error leer ist (also wenn kein Fehler gesetzt ist) soll beendet werden? Wolltest Du nicht dann eigentlich eine Mail verschicken?
+
+>     else {
+>         $errors = implode(', ',$error);
+>         $err = 'Die von Ihnen eingegebene Telefonnummer ist falsch: ';
+>     }
+> }
+> ?>
+
+Wieso ist hier der Scriptteil zuende. Da fehlt noch das Versenden.
+
+> <?php
+
+Der Code zum Versenden gehört eigentlich in den Bedingungsblock, den Du mit exit terminierst.
+
+> define ('MAILFROM', "Sofort Hilfe"); // ggfls. Absender hier eintragen
+
+Das sollte MAILSUBJECT heisen. Man muss den Dingen schon Namen geben die eswas aussagen
+
+> define ('MAILSUBJECT', "Rückruf"); // Hier betreff eintragen
+
+Das sollte dann z.B. MAILMESSAGE heisen. Außerdem schreibst Du hier lediglich 'Rückruf' rein. Woher denkst Du kommt die Rufnummer wenn Du diese nicht angibst?
+
+> HTML…
+
+Das HTML ist nicht wirklich von Interesse. Hier gehts um PHP.
+
+MfG, Ulf
+

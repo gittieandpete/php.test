@@ -1,0 +1,45 @@
+[Edit]
+Edge=80
+[Options]
+Font=Courier New
+Highlight=1
+SaveSession=1
+DialogFont=Tahoma
+ExternPath=http://sourceforge.org/dev-php/
+LocalPath=C:\
+LocalPort=8080
+FTPcfname=0
+FTPPassive=0
+FTPHost=
+FTPPort=21
+FTPUser=anonymous
+FTPServerPath=
+Parameters=-q
+FindText=
+ReplaceText=
+BrowserPath=http://devphp.sourceforge.net/
+[Registry]
+css=0
+html=0
+js=0
+sql=0
+php=1
+[Documentation]
+Lang=en
+[UPDATE]
+Version=2.0.6
+Download=
+Description=
+[History]
+Last=6
+1=D:\Programme\PHP\pear\XML\Parser\Simple.php
+2=D:\Programme\PHP\pear\XML\Parser\Simple.php
+3=D:\Programme\PHP\pear\DB\mysql.php
+4=D:\Programme\PHP\pear\XML\Parser\Simple.php
+5=D:\Programme\PHP\pear\DB\mysql.php
+6=D:\Programme\Apache Group\Apache2\htdocs\info.php
+[Session]
+Last=3
+1=D:\Programme\PHP\pear\XML\Parser\Simple.php
+2=D:\Programme\PHP\pear\DB\mysql.php
+3=D:\Programme\Apache Group\Apache2\htdocs\info.php

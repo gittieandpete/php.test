@@ -1,0 +1,32 @@
+Beispiel 4-01: Arrays erzeugen
+Beispiel 4-02: Arrays mit array() erzeugen
+Beispiel 4-03: Kollision von Arrays und Skalaren
+Beispiel 4-04: Numerische Arrays mit array() erzeugen
+Beispiel 4-05: Elemente mit [] hinzufügen
+Beispiel 4-06: Die Größe eines Arrays ermitteln
+Beispiel 4-07: Arrays mit foreach() durchlaufen
+Beispiel 4-08: Alternierende Farben für Tabellenzeilen
+Beispiel 4-09: Ein Array bei foreach() modifizieren
+Beispiel 4-10: foreach() bei numerischen Arrays verwenden
+Beispiel 4-11: Ein numerisches Array mit for() durchlaufen
+Beispiel 4-12: Alternierende Farben für Tabellenzeilen mit for()
+Beispiel 4-13: Die Reihenfolge von Array-Elementen bei foreach()
+Beispiel 4-14: Nach einem Element mit einem bestimmten Schlüssel suchen
+Beispiel 4-15: Nach einem Element mit einem bestimmten Wert suchen
+Beispiel 4-16: Ein Element mit einem bestimmten Wert ermitteln
+Beispiel 4-17: Operationen auf Array-Elementen
+Beispiel 4-18: Werte von Array-Elementen in Strings in doppelten Anführungszeichen interpolieren
+Beispiel 4-19: Werte von Array-Elementen mit geschweiften Klammern interpolieren
+Beispiel 4-20: Mit implode() aus einem Array einen String erzeugen
+Beispiel 4-21: Mit implode() HTML-Tabellenzeilen ausgeben
+Beispiel 4-22: Mit explode() einen String in ein Array umwandeln
+Beispiel 4-23: Mit sort() sortieren
+Beispiel 4-24: Mit asort() sortieren
+Beispiel 4-25: Mit ksort() sortieren
+Beispiel 4-26: Mit arsort() sortieren
+Beispiel 4-27: Mit array() mehrdimensionale Arrays anlegen
+Beispiel 4-28: Auf Elemente mehrdimensionaler Arrays zugreifen
+Beispiel 4-29: Mehrdimensionale Arrays manipulieren
+Beispiel 4-30: Mehrdimensionale Arrays mit foreach() durchlaufen
+Beispiel 4-31: Mehrdimensionale Arrays mit for() durchlaufen
+Beispiel 4-32: Werte mehrdimensionaler Arrays interpolieren

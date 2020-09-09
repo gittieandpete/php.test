@@ -1,0 +1,30 @@
+Beispiel 6-01: Hallo sagen
+Beispiel 6-02: Ein Formular mit zwei Elementen
+Beispiel 6-03: Übermittelte Formularparameter ausgeben
+Beispiel 6-04: Formularelemente mit mehreren Werten
+Beispiel 6-05: Auf mehrere übermittelte Werte zugreifen
+Beispiel 6-06: Mit Funktionen "Hallo" sagen
+Beispiel 6-07: Einen verborgenen Parameter verwenden, um die Übermittlung des Formulars anzuzeigen
+Beispiel 6-08: Formulardaten valdieren
+Beispiel 6-09: Mit dem Formular Fehlermeldungen ausgeben
+Beispiel 6-10: Auf erforderliche Elemente prüfen
+Beispiel 6-11: Auf eine Ganzzahl prüfen
+Beispiel 6-12: Auf eine Fließkommazahl prüfen
+Beispiel 6-13: trim() ud strlen() kombinieren
+Beispiel 6-14: Einen Wert in $_POST ändern
+Beispiel 6-15: Einen Wertebereich prüfen
+Beispiel 6-16: Einen Datumsbereich prüfen
+Beispiel 6-17: Die Syntax einer E-Mail-Adresse prüfen
+Beispiel 6-18: Ein <select>-Menü anzeigen
+Beispiel 6-19: Ein <select>-Menü mit unterschiedenen Optionen und Werte anzeigen
+Beispiel 6-20: Den aus einem <select>-Menü übermittelten Wert prüfen
+Beispiel 6-21: Aus einem String HTML-Tags entfernen
+Beispiel 6-22: In einem String HTML-Entitys kodieren
+Beispiel 6-23: Ein Array mit Standardwerten aufbauen
+Beispiel 6-24: Für ein Textfeld einen Standardwert festlegen
+Beispiel 6-25: Für ein mehrzeiliges Textfeld einen Standardwert festlegen
+Beispiel 6-26: Für ein <select>-Menü einen Standardwert festlegen
+Beispiel 6-27: Für eine mehrwertiges <select>-Menü Standardwerte festlegen
+Beispiel 6-28: Standardwerte für Checkboxen und Radio-Buttons festlegen
+Beispiel 6-29: Hilfsfunktionen zur Anzeige von Formularelementen
+Beispiel 6-30: Ein vollständiges Formular: Anzeige mit Standardwerten, Validierung und Verarbeitung

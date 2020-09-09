@@ -1,0 +1,161 @@
+<?php
+
+#  Copyright (c) 2010 Torsten Zuehlsdorff
+#  All rights reserved.
+#
+#  Redistribution and use in source and binary forms, with or without
+#  modification, are permitted provided that the following conditions
+#  are met:
+#  1. Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+#  2. Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+#  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+#  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+#  ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+#  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+#  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+#  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+#  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+#  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+#  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+#  SUCH DAMAGE.
+
+namespace Eastern;
+
+// just some testcases for demonstrations, feel free to remove them!
+print getEastern('2010') . "\n";         // test: this year
+print getEastern('2037') . "\n";         // test: last possible value when using 32 bit systems
+print getEastern('292277026596') . "\n"; // test: last possible value when using 64 bit systems
+print getEastern('292277026597') . "\n"; // test: now we are one step futher than 64 bit ;)
+
+/**
+  * @param $numYear - the year to calculate easter date for
+  * 
+  * @returns (string) the eastern date in format "dd.mm.y{1,*}"
+  * 
+  * @throws Exception if $numYear is not a string or contains something other than digits
+  *
+  * calculate the eastern date of the given year by using
+  * *just* the gregorian calendar system.
+  * 
+  * its save to use this function for all years until infinity or until 
+  * the calendar changes. there is no 32/64/whatever-bit-system-restriction.
+  * 
+  * ATTENTION: historical dates before 1582 should be wrongly calculated,
+  *            because of the calendar reform at this year
+  *
+  **/
+function getEastern($numYear) {
+
+  if(!is_string($numYear) || !ctype_digit($numYear))
+    throw new Exception ('"year" must be string *just* out of numbers');
+  
+  $numGolden = bcadd(bcmod($numYear, '19'), '1');
+  
+  // get the "Domincal number"
+  $numDom = getDomincal($numYear);
+  
+  // get solar and lunar corrections
+  $numSolar = getSolar($numYear);
+  $numLunar = getLunar($numYear);
+  
+  // get paschal full moon
+  $numPaschal = getPaschalFullMoon($numGolden, $numSolar, $numLunar);
+  
+  $numTmp = bcmod(bcsub(bcsub('4', $numPaschal), $numDom), '7');
+  
+  if(-1 === bccomp($numTmp, '0'))
+    $numTmp = bcadd($numTmp, '7');
+  
+  // number of days to easter after 21st march
+  $numEasterDays = bcadd(bcadd($numPaschal, $numTmp), '1');
+  
+  $arrEastern = array();
+  
+  if(-1 === bccomp($numEasterDays, '11')) {
+    $arrEastern['month'] = '03';
+    $arrEastern['day']   = bcadd($numEasterDays, '21');
+  } else {
+    $arrEastern['month'] = '04';
+    $arrEastern['day']   = bcsub($numEasterDays, '10');
+  }
+  
+  return sprintf('%02d.%02d.', $arrEastern['day'], $arrEastern['month']) . $numYear;
+  
+}
+
+/**
+  * 
+  * calculating the "Domincal number" by using this formular:
+  * (year + (year/4) - (year/100) + (year/400)) % 7
+  *
+  **/
+function getDomincal($numYear) {
+
+  
+  $numDom = bcadd($numYear, bcdiv($numYear, '4'));
+  $numDom = bcsub($numDom,  bcdiv($numYear, '100'));
+  $numDom = bcadd($numDom,  bcdiv($numYear, '400'));
+  $numDom = bcmod($numDom,  '7');
+  
+  if(-1 === bccomp($numDom, '0'))
+    $numDom = bcadd($numDom, '7');
+  
+  return $numDom;
+
+}
+
+/**
+  * calculating solar correction by using this formular:
+  * (year-1600)/100 - (year-1600)/400
+  *
+  **/
+function getSolar($numYear) {
+
+  $numTmp   = bcsub($numYear, '1600');
+  
+  return bcsub(bcdiv($numTmp, '100'), bcdiv($numTmp, '400'));
+
+}
+
+/**
+  * calculating the lunar correction by using this formular:
+  * (((year-1400) / 100) * 8) / 25
+  *
+  **/
+function getLunar($numYear) {
+
+  $numLunar = bcsub($numYear,  '1400');
+  $numLunar = bcdiv($numLunar, '100');
+  $numLunar = bcmul($numLunar, '8');
+  
+  return bcdiv($numLunar, '25');
+
+}
+
+/**
+  * get corrected date of "Paschal full moon"
+  *
+  **/
+function getPaschalFullMoon($numGolden, $numSolar, $numLunar) {
+
+  $numPaschal = bcsub('3', bcmul('11', $numGolden));
+  $numPaschal = bcadd($numPaschal, $numSolar);
+  $numPaschal = bcsub($numPaschal, $numLunar);
+  $numPaschal = bcmod($numPaschal, '30');
+  
+  if(-1 === bccomp($numPaschal, '0'))
+    $numPaschal = bcadd($numPaschal, '30');
+  
+  // correct date of paschal full moon
+  if(0 === bccomp($numPaschal, '29') ||
+     (0 === bccomp($numPaschal, '28') && 1 === bccomp($numGolden, '11')))
+     $numPaschal = bcsub($numPaschal, '1');
+  
+  return $numPaschal;
+
+}

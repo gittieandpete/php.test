@@ -1,0 +1,25 @@
+Bezüglich Codestil rate ich Dir:
+
+- Keine Zeilen über die 80. Spalte hinaus (für Usenet: nicht über die 76. Spalte hinaus)
+
+- Nur Operatoren werden immer von Whitespace umschlossen.  “->” ist i.e.S. in PHP *kein* Operator¹:
+<http://php.net/manual/en/language.operators.php>
+
+- “if” ist kein Funktionsbezeichner, sondern das Schlüsselwort einer Steueranweisung; nach solchen steht immer ein Leerzeichen:
+if ($result1) …
+
+- Bei Anweisungsblöcken wird nicht die erste geschweifte Klammer eingerückt,sondern nur der Inhalt des Blocks.
+
+- Ganz allgemein: Whitespace wird konsistent verwendet.  Also zum Beispiel nicht
+	$dbmerz -> prepare($query2)
+und dann wieder
+	$stmt->fetchAll(PDO::FETCH_OBJ)
+oder mal
+	$stmt = $dbmerz -> prepare($query2);
+und dann wieder
+	$max=$result2[0]->minjahr;
+Mit einer PHP-Entwicklungsumgebung wie zum Beispiel Eclipse PDT oderZend Studio wird das einfacher.
+
+- Alle Schlüsselwörter und Bezeichner eingebauter Funktionen in SQL-Anweisungen werden durchgängig gross geschrieben; andere Namenwerden durchgängig so geschrieben, wie sie erstellt wurden(Empfehlung: Kleinschreibung mit Unterstrich) und gequotet (“MIN(`jahr`).
+
+- Namen von Tabellen sollten Entitäten beschreiben und optimal auf Englisch sein, also nicht “wiealt2”, sondern “company_age”.  Bezüglich Englisch gilt dasselbe für Namen von Datenbanken, Spalten und Stored Procedures.

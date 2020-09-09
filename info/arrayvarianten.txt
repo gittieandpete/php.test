@@ -1,0 +1,68 @@
+> > guenter.baier@googlemail.com wrote:
+> > 
+>> >> ich stehe gerade auf dem Schlauch, ich benötige eine Funktion, die mir
+>> >> die verschiedenen Varianten eines Arrays liefert - wiederum als Array.
+> > [...]
+>> >> 1 : Rest : 2,3,4
+>> >> 2 : Rest : 1,3,4
+>> >> 3 : Rest : 1,2,4
+>> >> 4 : Rest : 1,2,3
+>> >> 1,2 : Rest : 3,4
+>> >> 1,3 : Rest : 2,4
+>> >> 1,4 : Rest : 2,3
+>> >> 2,3 : Rest : 1,4
+>> >> 2,4 : Rest : 1,3
+>> >> 3,4 : Rest : 1,2
+>> >> 1,2,3 : Rest : 4
+>> >> 2,3,4 : Rest : 1
+>> >> 3,4,1 : Rest : 2
+>> >> 4,1,2 : Rest : 3
+>> >> 1,2,3,4
+
+Mit ein bisschen Rekursion ganz einfach:
+
+<?php
+$search = array( 1,2,3,4 );
+$result = permute( $search );
+
+foreach ( $result as $sub ) {
+    echo implode( ',', $sub ), ' : Rest : ', implode( ',', array_diff(
+$search, $sub ) ), '<br />';
+}
+
+function permute( $arr )
+{
+    $result = array();
+    foreach ( $arr as $k => $v ) {
+        $first = array( $v );
+        unset( $arr[$k] );
+        $perm  = permute( $arr );
+        $result[] = $first;
+        foreach ( $perm as $next ) {
+            $result[] = array_merge( $first, $next );
+        }
+    }
+    return $result;
+}
+?>
+
+Ausgabe:
+1 : Rest : 2,3,4
+1,2 : Rest : 3,4
+1,2,3 : Rest : 4
+1,2,3,4 : Rest :
+1,2,4 : Rest : 3
+1,3 : Rest : 2,4
+1,3,4 : Rest : 2
+1,4 : Rest : 2,3
+2 : Rest : 1,3,4
+2,3 : Rest : 1,4
+2,3,4 : Rest : 1
+2,4 : Rest : 1,3
+3 : Rest : 1,2,4
+3,4 : Rest : 1,2
+4 : Rest : 1,2,3
+
+MfG
+Niels
+

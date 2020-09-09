@@ -1,0 +1,20 @@
+<ul>
+<li>&auml; = ä</li>
+<li>&ouml; = ö</li>
+<li>&uuml; = ü</li>
+<li>&Auml; = Ä</li>
+<li>&Ouml; = Ö</li>
+<li>&Uuml; = Ü</li>
+<li>&szlig; = ß</li>
+<li>&euro; = € </li>
+</ul>
+
+<pre>
+
+Vorsicht, diese Datei ist zu Testzwecken in
+
+	UTF-8
+	
+gespeichert.
+
+</pre>

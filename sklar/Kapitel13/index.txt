@@ -1,0 +1,21 @@
+Beispiel 13-01: Ein Button-Bild zeichnen
+Beispiel 13-02: Ein PDF-Dokument erzeugen
+Beispiel 13-03: Einen Flash-Film erzeugen
+Beispiel 13-04: Den Flash-Film in eine Webseite einschließen
+Beispiel 13-05: get_browser() verwenden
+Beispiel 13-06: Mit mail() eine Nachricht versenden
+Beispiel 13-07: Eine Nachricht mit Text- und HTML-Inhalten versenden
+Beispiel 13-08: Eine Formular für Datei-Uploads
+Beispiel 13-09: Mit QuickForm ein Formular aufbauen
+Beispiel 13-10: DomDocument erweitern, um RSS-Feeds zu erstellen
+Beispiel 13-11: XML mit XSL in HTML transformieren
+Beispiel 13-12: Ein XSL-Stylesheet für RSS-Feeds
+Beispiel 13-13: Die SQLite-Datenbank verwenden
+Beispiel 13-14: Ein Programm mit shell_exec() ausführen
+Beispiel 13-15: Mit der Erweiterung bcmath Berechnungen ausführen
+Beispiel 13-16: Mit der Erweiterung gmp Berechnungen ausführen
+Beispiel 13-17: Verschlüsseln und entschlüsseln mit mcrypt
+Beispiel 13-18: Aus PHP Perl verwenden
+Beispiel 13-19: Aus PHP Java verwenden
+Beispiel 13-20: Mit einem NNTP-Server verbinden
+Beispiel 13-21: Mit PHP-GTK einen Button anzeigen

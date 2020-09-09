@@ -1,0 +1,7 @@
+Fehler-Kontroll-Operatoren
+
+PHP unterstützt einen Operator zur Fehlerkontrolle: Das @-Symbol. Stellt man das @ in PHP vor einen Ausdruck werden alle Fehlermeldungen, die von diesem Ausdruck erzeugt werden könnten, ignoriert. 
+
+Ist das track_errors-Feature aktiviert, werden alle Fehlermeldungen, die von diesem Ausdruck erzeugt werden, in der Variablen $php_errormsg gespeichert. Da diese Variable mit jedem neuen Auftreten eines Fehlers überschrieben wird, sollte man sie möglichst bald nach Verwendung des Ausdrucks überprüfen, wenn man mit ihr arbeiten will.
+
+siehe http://de3.php.net/manual/de/language.operators.errorcontrol.php

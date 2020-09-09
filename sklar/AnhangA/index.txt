@@ -1,0 +1,7 @@
+Beispiel A-01: PHP-Testprogramm
+Beispiel A-02: Die PEAR-Installation prüfen
+Beispiel A-03: Mit phpinfo() Konfigurationsinformationen abrufen
+Beispiel A-04: Beispielzeilen aus php.ini
+Beispiel A-05: Beispiel-PHPKonfigurationszeilen in httpd.conf
+Beispiel A-06: Eine Konfigurationsdirektive mit ini_set() ändern
+Beispiel A-07: include_path mit ini_get() und ini_set() ändern

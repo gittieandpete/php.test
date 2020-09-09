@@ -1,0 +1,1 @@
+$fh = fopen('c:/windows/system32/einstellungen.txt','rb');

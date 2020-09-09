@@ -1,0 +1,18 @@
+Beispiel 11-01: Eine HTML-Liste, die kein gültiges XML darstellt
+Beispiel 11-02: Eine HTML-Lister, die gültiges XML darstellt
+Beispiel 11-03: XML in einen String parsen
+Beispiel 11-04: Den Inhalt von XML-Elementen ausgeben
+Beispiel 11-05: Den Inhalt von Kindelementen ausgeben
+Beispiel 11-06: Attribute von XML-Elementen ausgeben
+Beispiel 11-07: Auf Elemente gleichen Namens zugreifen
+Beispiel 11-08: Elemente gleichen namens mit foreach() durchlaufen
+Beispiel 11-09: Kindelemente mit foreach() durchlaufen
+Beispiel 11-10: Elemente und Attribute ändern
+Beispiel 11-11: Ein vollständiges XML-Dokument ausgeben
+Beispiel 11-12: Den Seitentyp in XML ändern
+Beispiel 11-13: Ein XML-Dokument an den Webclient schicken
+Beispiel 11-14: Ein XML-Dokument aus einer Datei laden
+Beispiel 11-15: Ein entferntes XML-Dokument laden
+Beispiel 11-16: Ein XML-Dokument in einer Datei speichern
+Beispiel 11-17: Mit Hilfe eines Arrays XML generieren
+Beispiel 11-18: Informationen aus einer Datenbank-Tabelle in XML formatieren

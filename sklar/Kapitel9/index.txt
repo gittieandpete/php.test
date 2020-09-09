@@ -1,0 +1,17 @@
+Example 9-01: Wie spät ist es?
+Example 9-02: Einen formatierten Datumsstring mit date() ausgeben
+Example 9-03: Einen formatierten Datumsstring mit strftime() ausgeben
+Example 9-04: Einen formatierten Zeitstring für eine bestimmte Uhrzeit ausgeben
+Example 9-05: Einen formatierten Zeitstring mit anderem Text ausgeben
+Example 9-06: Einen Unix-Zeitstempel erzeugen
+Example 9-07: strtotime() verwenden
+Example 9-08: strtotime() mit einem Anfangszeitstempel verwenden
+Example 9-09: Ein <select>-Menü für die Tagesauswahl
+Example 9-10: Ein Menü zur Tagesauswahl mit input_select()
+Example 9-11: Mehrere <select>-Menüs für die Auswahl eines Datums
+Example 9-12: Datumsauswahl mit input_select()
+Example 9-13: Das Verfallsdatum einer Kreditkarte prüfen
+Example 9-14: Mehrere <select>-Menüs für die Auswahl einer Uhrzeit
+Example 9-15: Eine Uhrzeit mit input_select() auswählen
+Example 9-16: Mit einem vom Benutzer angegebenen Datum Berechnungen durchführen
+Example 9-17: Einen Kalender ausgeben

@@ -1,0 +1,1 @@
+setcookie('kurze-benutzerid','ralf',0,'/','.beispiel.com');

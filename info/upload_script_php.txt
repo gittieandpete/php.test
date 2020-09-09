@@ -1,0 +1,75 @@
+On Mon, 22 Mar 2010 11:32:09 +0100, Peter Schreiner wrote:
+
+> > hi gemeinde,
+Hallo Schäfchen ;-)
+
+> > ich bin neueinsteiger in php und habe mir gleich ein für mich
+> > unlösbares problem aufgehalst.
+OK. Aber Deine Shift-Taste ist kaputt! Wenns nur aus Faulheit ist: Lass es
+sowas wird hier nicht gern gesehen.
+
+> > in meiner index.php habe ich eine form integriert, über die ich den
+> > filenamen angeben und an die upload.php senden kann.
+Will heisten Du hast Dir ein Uploadformular nebst verarbeitenden PHP-Code
+gebastelt.
+
+> > btw. ich benutze jquery um z.b. das xml auseinander klamüstern zu
+> > können.
+Nimm doch JSon das wird von PHP direkt unterstützt und JS kanns
+deserialisieren
+
+> > ########################################## [upload.php]
+> > 
+> > if(@move_uploaded_file($_FILES["myfile"]["tmp_name"],$uploadfile)) {
+> >   $xml = '<?xml version="1.0"?>';
+> >   $xml.= "<upload>";
+> >   $xml.= "<returnmsg>OK</returnmsg>";
+> >   $xml.= "<filename>$uploadfile</filename>"; $xml.= "</upload>";
+$message = '';
+$success = false;
+
+if (UPLOAD_ERR_OK !== $_FILES["myfile"]["error"])
+{
+    switch ($_FILES["myfile"]["error"])
+    {
+        case UPLOAD_ERR_INI_SIZE:
+        case UPLOAD_ERR_FORM_SIZE:
+            $message = 'Die hochgeladene Datei ist zu gross!';
+            break;
+        case UPLOAD_ERR_PARTIAL:
+            $message = 'Die Datei wurde nicht komplett hochgeladen!';
+            break;
+        // case UPLOAD_ERR_NO_FILE:
+        default:
+            $message = 'Es wurde nix hochgeladen!';
+            break;
+    }
+}
+else
+{
+    if(@move_uploaded_file($_FILES["myfile"]["tmp_name"],$uploadfile))
+    {
+        $success = true;
+    }
+    else
+    {
+        $success = false;
+        $message = 'Die hochgeladene Datei war ungültig!';
+    }
+}
+
+> > <script language="javascript" type="text/javascript">
+> > 	window.top.window.stopUpload(<?php echo $xml ?>);
+window.top.window.stopUpload(<?php
+  echo ($success ? 'true' : 'false'), ", '{$message}'"; ?>);
+
+
+> > </script>
+> > 
+> > 
+> > ########################################## [index.php]
+> > function stopUpload(success, message)
+> > {
+      if (!success) alert(message);
+
+MfG, Ulf

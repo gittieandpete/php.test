@@ -1,0 +1,58 @@
+Example 7-01: Eine externe Datei mit require laden
+Example 7-02: Mit DB::connect() eine Verbindung herstellen
+Example 7-03: Mit localhost verbinden
+Example 7-04: Auf Verbindungsfehler prüfen
+Example 7-05: Die Tabelle gerichte anlegen
+Example 7-06: Dem Datenbankprogramm eine CREATE TABLE übermitteln
+Example 7-07: Eine Tabelle entfernen
+Example 7-08: Mit query() Daten einfügen
+Example 7-09: Daten einfügen###7-11
+Example 7-10: Ein neues Gericht einfügen###7-12
+Example 7-11: Ein Stringwert quotieren###7-13
+Example 7-12: Einfügen ohne Angabe aller Spalten###7-14
+Example 7-13: Einfügen mit Werten für alle Spalten###7-15
+Example 7-14: Auf Fehler von query() prüfen###7-09
+Example 7-15: Automatische Fehlerbehandlung mit setErrorHandling()###7-10
+Example 7-16: Daten aktualisieren###7-18
+Example 7-17: Eine Spalte auf einen String oder eine Zahl setzen###7-19
+Example 7-18: In einem UPDATE-Ausdruck einen Spaltennamen verwenden###7-20
+Example 7-19: Mit UPDATE eine WHERE-Klausel verwenden###7-21
+Example 7-20: Mit query() Daten ändern###7-16
+Example 7-21: Zeilen aus einer Tabelle entfernen###7-23
+Example 7-22: Alle Zeilen einer Tabelle entfernen###7-24
+Example 7-23: Einige Zeilen aus einer Tabelle entfernen###7-25
+Example 7-24: Mit query() Daten löschen###7-17
+Example 7-25: Feststellen, wie viele Zeilen von einem UPDATE oder DELETE betroffen wurden###7-22
+Example 7-26: Unsicheres Einfügen von Formulardaten
+Example 7-27: Sicheres Einfügen von Formulardaten
+Example 7-28: Mehrere Platzhalter verwenden
+Example 7-29: Aus einer Sequenz eine ID erhalten
+Example 7-30: Ein Formular zum Einfügen von Datensätzen in die Tabelle gerichte
+Example 7-31: Daten abrufen###7-34
+Example 7-32: gerichtname und preis abrufen###7-35
+Example 7-33: In einer SELECT-Abfrage den * verwenden###7-36
+Example 7-34: Die Anzahl von Zeilen einschränken, die von SELECT zurückgeliefert werden###7-37
+Example 7-35: Bestimmte Gerichte abrufen###7-38
+Example 7-36: Zeilen mit query() und fetchRow() abrufen###7-31
+Example 7-37: Mit numrows() die Anzahl von Zeilen zählen###7-32
+Example 7-38: Zeilen mit getAll() abrufen###7-33
+Example 7-39: Mit getRow() eine Zeile abrufen
+Example 7-40: Mit getOne() einen Wert abrufen
+Example 7-41: Die Zeilen sortieren, die von einer SELECT-Abfrage zurückgeliefert werden
+Example 7-42: Vom höchsten zum niedrigsten Wert sortieren
+Example 7-43: Über mehrere Spalten sortieren
+Example 7-44: Die Anzahl von Zeilen begrenzen, die von SELECT zurückgeliefert werden
+Example 7-45: Immer noch die Anzahl von Zeilen begrenzen, die von SELECT zurückgeliefert werden
+Example 7-46: Zeilen als assoziative Arrays abrufen
+Example 7-47: Zeilen als Objekte abrufen
+Example 7-48: Mit SELECT Jokerzeichen verwenden ###7-49
+Example 7-49: Mit UPDATE Jokerzeichen verwenden ###7-50
+Example 7-50: Mit DELETE Jokerzeichen verwenden ###7-51
+Example 7-51: Jokerzeichen maskieren###7-52
+Example 7-52: In einer SELECT-Anweisung Platzhalter verwenden###7-48
+Example 7-53: In einer SELECT-Anweisung keine Platzhalter verwenden
+Example 7-54: Falsche Verwendung von Platzhaltern in einer UPDATE-Anweisung
+Example 7-55: Richtige Verwendung von quoteSmart() und strtr() in einer UPDATE-Anweisung
+Example 7-56: Formular zum Durchsuchen der Tabelle gerichte
+Example 7-57: Mit mysqli eine Verbindung herstellen
+Example 7-58: Eine verarbeite_formular()-Funktion die mysqli verwendet

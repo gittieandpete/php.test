@@ -1,0 +1,23 @@
+Beispiel 5-01: Eine Funktion deklarieren
+Beispiel 5-02: Eine Funktion aufrufen
+Beispiel 5-03: Funktionen definieren nachdem oder bevor sie aufgerufen werden
+Beispiel 5-04: Eine Funktion deklarieren, die ein Argument erwartet
+Beispiel 5-05: Einen Standardwert festlegen
+Beispiel 5-06: Eine Funktion deklarieren, die zwei Argumente erwartet
+Beispiel 5-07: Eine Funktion mit zwei Argumenten aufrufen
+Beispiel 5-08: Mehrere optionale Argumente
+Beispiel 5-09: Argumentwerte ändern
+Beispiel 5-10: Einen Rückgabewert festhalten
+Beispiel 5-11: Einen Wert aus einer Funktion zurückgeben
+Beispiel 5-12: Einen Rückgabewert in einer Using if()-Anweisung verwenden
+Beispiel 5-13: Aus einer Funktion ein Array zurückliefern
+Beispiel 5-14: Ein Array verwenden, das von einer Funktion zurückgeliefert wird
+Beispiel 5-15: Mehrere return-Anweisungen in einer Funktion
+Beispiel 5-16: Einen Rückgabewert an eine andere Funktion weitergeben
+Beispiel 5-17: Rückgabewerte mit Using if() verwenden
+Beispiel 5-18: Funktionen, die true oder false zurückliefern
+Beispiel 5-19: Zuweisung und Funktionsaufruf innerhalb eines Testausdrucks
+Beispiel 5-20: Geltungsbereiche von Variablen
+Beispiel 5-21: Das Array $GLOBALS
+Beispiel 5-22: Eine Variable mit $GLOBALS modifieren
+Beispiel 5-23: Das Schlüsselwort global

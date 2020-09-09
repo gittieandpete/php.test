@@ -1,0 +1,3 @@
+2) or die() nicht verwenden.
+$conn = mysql_connect(...);
+if ($conn === false) trigger_error(...);

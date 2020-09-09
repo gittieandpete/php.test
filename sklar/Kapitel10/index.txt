@@ -1,0 +1,24 @@
+Beispiel 10-01: file_get_contents() mit einer Schablonenseite verwenden
+Beispiel 10-02: page-template.php für Beispiel 10-01
+Beispiel 10-03: Eine entfernte Webseite mit file_get_contents() abrufen
+Beispiel 10-04: Eine Datei mit file_put_contents() speichern
+Beispiel 10-05: Eine entfernte Datei über FTP mit file_put_contents() speichern
+Beispiel 10-06: Eine Datei zeilenweise lesen
+Beispiel 10-07: leute.txt für Beispiel 10-06
+Beispiel 10-08: Eine Datei auf Windows öffnen
+Beispiel 10-09: Daten in eine Datei schreiben
+Beispiel 10-10: gerichte.csv für Beispiel 10-11
+Beispiel 10-11: CSV-Daten in eine Datenbank-Tabelle einfügen
+Beispiel 10-12: Einen CSV-formatierten String erzeugen
+Beispiel 10-13: CSV-formatierte Daten in eine Datei schreiben
+Beispiel 10-14: Den Seitentyp in CSV ändern
+Beispiel 10-15: Eine CSV-Datei an den Browser senden
+Beispiel 10-16: Prüfen, ob eine Datei existiert
+Beispiel 10-17: Prüfen, ob eine Leseberechtigung besteht
+Beispiel 10-18: Prüfen, ob eine Schreibberechtigung besteht
+Beispiel 10-19: Auf Fehler von fopen() oder fclose() prüfen
+Beispiel 10-20: Auf Fehler von file_get_contents() prüfen
+Beispiel 10-21: Auf Fehler von fopen(), fgets() oder fclose() prüfen
+Beispiel 10-22: Auf Fehler von file_put_contents() prüfen
+Beispiel 10-23: Einen Formularparameter säubern, der in einen Dateinamen eingeht
+Beispiel 10-24: Einen Dateinamen mit realpath() säubern

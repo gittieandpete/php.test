@@ -1,0 +1,1 @@
+$db->setErrorHandling(PEAR_ERROR_CALLBACK,'datenbank_fehler');

@@ -1,0 +1,4 @@
+alice@example.com|Alice Müller
+kurti@beispiel.org|Kurt Grün
+karl@milch.beispiel.com|Karl Turm
+dodgson@kroete.beispiel.com|Lewis Humbert

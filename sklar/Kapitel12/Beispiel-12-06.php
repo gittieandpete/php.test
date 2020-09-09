@@ -1,0 +1,1 @@
+die('Das ist: ' . __FILE__);

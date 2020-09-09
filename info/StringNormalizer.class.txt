@@ -1,0 +1,134 @@
+<?php
+/**
+ * In dieser Datei wird die statische Klasse {@see StringNormalizer}
+ * definiert.
+ * 
+ * Diese Datei ist UTF-8 kodiert abgespeichert und sollte deshalb auch
+ * ausschließlich mit Unicode-Fahigen Editoren in dieser Kodierung geöffnet
+ * und/oder bearbeitet sowie genutzt werden.
+ */
+
+
+declare ( encoding='UTF-8' );
+
+
+/**
+ * Diese Klasse stellt eine statische Methode bereit mit Hilfe derer eine
+ * Zeichenkette so normalisiert werden kann, das diese z.B. als Bestandteil
+ * eines URL-Pfades oder auch als Dateiname verwendet werden kann.
+ * 
+ * 
+ * <b>Ein Nutzungsbeispiel</b>
+ * 
+ * <code>
+ * 
+ * $str = <<<STRING
+ * Lörem's  1% 23 ip/suß.
+ *  Dol-oret\\sed — ea çíommodo "nisi"! foo foo foo foo foo
+ * foo foo foo foo foo foo foo foo foo foo foo foo foo
+ * STRING;
+ * 
+ * echo StringNormalizer::Run( $str, 'utf-8', 35, true );
+ * </code>
+ * 
+ * @author  Ulf [Kado] Kadner <dr_logic@gmx.net>
+ * @license LGPL (Lesser Gnu Public License)
+ * @since   2010-10-20 18:00:00
+ * @version 0.1.0
+ */
+final class StringNormalizer
+{
+
+    /**
+     * Private Constructor da die Klasse nur statisch nutzbar sein soll.
+     */
+    private function __construct() { }
+	
+    private static $letterReplacements = array(
+        'Ä' => 'Ae',   'ä' => 'ae',  'Æ' => 'Ae',  'æ' => 'ae',  'À' => 'A',
+        'à' => 'a',    'Á' => 'A',   'á' => 'a',   'Â' => 'A',   'â' => 'a',
+        'Ã' => 'A',    'ã' => 'a',   'Å' => 'A',   'å' => 'a',   'ª' => 'a',
+        'ₐ' => 'a',    'Ć' => 'C',   'ć' => 'c',   'Ç' => 'C',   'ç' => 'c',
+        '©' => '',     'Ð' => 'D',   'đ' => 'd',   'È' => 'E',   'è' => 'e',
+        'É' => 'E',    'é' => 'e',   'Ê' => 'E',   'ê' => 'e',   'Ë' => 'E',
+        'ë' => 'e',    'ₑ' => 'e',   'ƒ' => 'f',   'Ì' => 'I',   'ì' => 'i',
+        'Í' => 'I',    'í' => 'i',   'Î' => 'I',   'î' => 'i',   'Ï' => 'Ii',
+        'ï' => 'ii',   '¡' => 'i',   '£' => 'L',   'Ñ' => 'N',   'ñ' => 'n',
+        'ⁿ' => 'n',    'Ò' => 'O',   'ò' => 'o',   'Ó' => 'O',   'ó' => 'o',
+        'Ô' => 'O',    'ô' => 'o',   'Õ' => 'O',   'õ' => 'o',   'Ø' => 'Oe',
+        'ø' => 'oe',   'ₒ' => 'o',   'Ö' => 'Oe',  'ö' => 'oe',  'Œ' => 'Oe',
+        'œ' => 'oe',   '®' => '',    'ß' => 'ss',  'Š' => 'S',   'š' => 's',
+        '™' => '',     'Ù' => 'U',    'ù' => 'u',  'Ú' => 'U',   'ú' => 'u',
+        'Û' => 'U',    'û' => 'u',    'Ü' => 'Ue', 'ü' => 'ue',  'µ' => 'u',
+        '×' => 'x',    'Ý' => 'Y',    'ý' => 'y',  'ÿ' => 'y',   'Ž' => 'Z',
+        'ž' => 'z');
+    private static $currencyReplacements = array(
+        '¢' => 'Cent',     '€' => 'Euro',    '¥' => 'Yen', '$' => 'Dollar' );
+    private static $mathReplacements = array(
+        '№' => 'Nummer',   '¹' => '1',             '²' => '2',   '³' => '3',
+        '½' => 'haelfte',  '¼' => 'viertel',       '¾' => 'dreiviertel',
+        '═' => ' gleich ', '=' => ' gleich ',      '±' => ' plusminus ',
+        '¦' => ' oder ',   '|' => ' oder ',        '~' => ' rund ',
+        '÷' => ' durch ',  '*' => 'x',             '+' => ' plus ',
+        '°' => 'Grad',     '%' => 'Prozent',       '&' => ' und ');
+    private static $noMathReplacements = array(
+        '№' => 'Nr.',      '¦' => ' oder ',        '|' => ' oder ',
+        '~' => ' rund ',   '+' => ' plus ',        '°' => 'Grad',
+        '%' => 'Prozent',  '&' => ' und ');
+    private static $otherReplacements = array(
+        '‰' => 'promille',  '°C' => 'Grad Celsius', '°F' => 'Grad Fahrenheit', 
+        '§' => 'Paragraph', '·' => '.', '@' => ' at ', ' ' => ' ');
+    
+    /**
+     * Normalisiert eine beliebige Zeichenkette so das diese in einer Url
+     * als Url-Element oder als Dateiname verwendet werden kann. Die maximale
+     * Länge der zurück gegebenen Zeichenkette beträgt, unabhängig vom
+     * Parameter $maxResultLength, 64 Zeichen.
+     *  
+     * @param string $string          Zu normalisierende Zeichenkette
+     * @param string $charset         Zeichensatz der übergebenen Zeichenkette
+     *                                (muß zur Laufzeitumgebung und auch zur
+     *                                zur Kodierung dieses Scripts passen)
+     * @param int    $maxResultLength Maximale Länge der resultierenden
+     *                                Zeichenkette (mehr als 64 geht nicht!)
+     * @param bool   $replaceMath     Sollen Mathematische Zeichen wie *%
+     *                                als solche, methematikbezogen ersetzt
+     *                                werden oder nur einfach ohne Mathematik-
+     *                                verbindung? 
+     */
+    public static function Run(
+        $string, $charset='utf-8', $maxResultLength=64, $replaceMath=true)
+    {
+    	$maxResultLength = min($maxResultLength, 64);
+        $string = $replaceMath
+            ? strtr(
+                strtr( $string, self::$otherReplacements ),
+                self::$mathReplacements )
+            : strtr(
+                strtr( $string, self::$otherReplacements ),
+                self::$noMathReplacements );
+        $string = strtr(
+            strtr( $string, self::$currencyReplacements ),
+            self::$letterReplacements );
+        # Alles was nicht Buchstabe, Zahl, _ .- ist entfernen
+        $string = preg_replace( '~[^A-Za-z\d ._-]+~', '', $string );
+        # Leerzeichen, Tabulatoren, Zeilenumbrüche
+        $string = preg_replace( '~[-\s]+~', ' ', $string );
+        $tmp = explode( '#', wordwrap($string, $maxResultLength, '#'), 2 );
+        $string = str_replace(' ', '-', trim( $tmp[0] ));
+        # Großbuchstaben durch Kleinbuchstaben ersetzen
+        $string = function_exists('mb_strtolower')
+            ? mb_strtolower($string, $charset)
+            : strtolower($string);
+        # Mehrfache .-_ Folgen eliminieren
+        $string = preg_replace( '~[._-]{2,}~', '-', $string );
+        # Rückgabe mit bereinigten Anfang und Ende
+        return trim( $string, '.-_' );
+    }
+	
+}
+#
+
+
+
+?>

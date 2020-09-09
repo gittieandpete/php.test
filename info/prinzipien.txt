@@ -1,0 +1,13 @@
+Gute Software folgt vier Prinzipien:
+
+OCP (Open-Closed Principle)
+	Bestehende Klassen sollten nicht geändert werden (können), sondern mittels Dependency Injection, Vererbung oder anderen Techniken in ihrer Funktionalität angepasst werden (können).
+
+DRY (Don't Repeat Yourself)
+	Doppelter Code ist zu vermeiden. Codeteile, die gemeinsam sind, werden in eine eigene Methode ausgelagert.
+
+SRP (Single Responsibility Principle)
+	Jede Klasse soll nur eine einzige Verantwortung haben. Diese und keine andere.
+
+LSP (Liskovsches Substitutionsprinzip)
+	Subtypen müssen für ihre Basisklassen eingesetzt werden können. Damit stellt man sauber entworfene Vererbung sicher.

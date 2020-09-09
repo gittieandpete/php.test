@@ -1,0 +1,10 @@
+Beispiel 12-01: Ein Parse-Fehler
+Beispiel 12-02: Ein verzwickterer Parse-Fehler
+Beispiel 12-03: Ein fehlerhaftes Programm ohne Debugging-Ausgaben
+Beispiel 12-04: Ein fehlerhaftes Programm mit Debugging-Ausgaben
+Beispiel 12-05: Alle übermittelten Formularparameter mit var_dump() ausgeben
+Beispiel 12-06: Berichten, welche Datei gerade betrachtet wird
+Beispiel 12-07: Ein fehlerhaftes Programm mit Debugging-Ausgaben im Fehlerprotokoll
+Beispiel 12-08: Alle übermittelten Formularparameter mit var_dump() ans Fehlerprotokoll senden
+Beispiel 12-09: Eine selbstdefinierte Funktion für die Behandlung von Datenbankfehlern einrichten
+Beispiel 12-10: Eine selbstdefinierte Funktion für die Behandlung von Datenbankfehlern

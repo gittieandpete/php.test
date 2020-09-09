@@ -1,0 +1,23 @@
+Beispiel 3-01: Mit if() eine Entscheidung fällen
+Beispiel 3-02: Mehrere Anweisungen in einem if()-Codeblock
+Beispiel 3-03: else mit if() verwenden
+Beispiel 3-04: elseif() verwenden
+Beispiel 3-05: elseif() mit else verwenden
+Beispiel 3-06: Der Gleichoperator
+Beispiel 3-07: Der Nicht-Gleichoperator
+Beispiel 3-08: Assignment that should be a comparison###Diese beiden Beispiele
+(08 und 09) würde ich streichen. Die Nummerierung der nachfolgenden Beispiele 
+anpassen. Ansonsten stimmt die Nummerierung der Biespiele hier nicht mehr mit der
+im Text überein. So wesentlich sind diese beiden Beispiele nicht.###
+Beispiel 3-09: Comparing with the literal on the left
+Beispiel 3-10: Kleiner-als und Größer-als
+Beispiel 3-11: Fließkommazahlen vergleichen
+Beispiel 3-12: Strings vergleichen
+Beispiel 3-13: Strings und Zahlen vergleichen
+Beispiel 3-14: Strings mit strcmp() vergleichen
+Beispiel 3-15: Den Negationsoperator verwenden
+Beispiel 3-16: Der Negationsoperator
+Beispiel 3-17: Logische Operatoren
+Beispiel 3-18: Ein <select>-Menü mit while() ausgeben
+Beispiel 3-19: Ein <select>-Menü mit for() ausgeben
+Beispiel 3-20: Mehrere Ausdrücke bei for()

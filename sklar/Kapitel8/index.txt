@@ -1,0 +1,19 @@
+Beispiel 8-01: Ein Cookie setzen
+Beispiel 8-02: Einen Cookie-Wert ausgeben
+Beispiel 8-03: Eine Seite mit setcookie() beginnen
+Beispiel 8-04: Die Verfallszeit eines Cookies setzen
+Beispiel 8-05: Den Cookie-Pfad setzen
+Beispiel 8-06: Den Cookie-Pfad auf ein bestimmtes Verzeichnis setzen
+Beispiel 8-07: Die Cookie-Domain setzen
+Beispiel 8-08: Ein Coolie löschen
+Beispiel 8-09: Seitenzugriffe mit einem Cookie zählen
+Beispiel 8-10: Formulardaten in einer Session speichern
+Beispiel 8-11: Session-Daten ausgeben
+Beispiel 8-12: Die zulässige Ruhezeit von Sessions ändern
+Beispiel 8-13: Die Wahrscheinlichkeit für das Bereinigen abgelaufen Cookies ändern
+Beispiel 8-14: Ein Login-Formular anzeigen
+Beispiel 8-15: Etwas besonderes für einen eingeloggten Benutzer tun
+Beispiel 8-16: Verschlüsselte Passwörter verwenden
+Beispiel 8-17: Benutzername und Passwort aus einer Datenbank abrufen
+Beispiel 8-18: Ausloggen
+Beispiel 8-19: Ein Programm das nur mit Ausgabepufferung funktioniert

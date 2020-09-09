@@ -1,0 +1,88 @@
+Helmut Hullen  wrote:
+
+> ich habe hier (u.a.) ein PHP-Skript, das (nach
+> Apache-Authentifizierung)
+> den Login-Namen und das Passwort des Users feststellen (und notfalls
+> auch anzeigen) kann, z.B. User "helmut" mit Passwort "geheim".
+>
+> Das Apache-Passwort ist gleich dem Linux-Passwort.
+
+Nicht so gut, da das Apache-Passwort unverschlüsselt übertragen wird.
+Dadurch ist die Sicherheit der Benutzerdaten schon stark beeinträchtigt.
+Es sei denn, es läuft alles über https/ssl...
+
+> Kann ich unter PHP erreichen, dass irgendeine Datei des hier
+> eingeloggten Users (z.B. "helmut") angezeigt (oder sonstwie
+> verarbeitet)
+> wird; also z.B.
+>
+>        echo shell_exec('cat /home/helmut/testdatei.txt 2>&1');
+>
+> Bisher bekomme ich (wie erwartet) die Fehlermeldung "Keine
+> Berechtigung". Und das ist ja auch meistens sinnvoll.
+>
+> Wo könnte/müsste ich an den Berechtigungen drehen?
+
+Das kommt wohl darauf an, was Du im Detail vorhast.
+
+Allgemein gesagt:
+
+Damit PHP auf die Dateien direkt zugreifen kann, müssen die Dateirechte
+so gesetzt sein, daß der Apache/PHP-Prozess Leserechte besitzt. Da der
+Apache/PHP-Prozess unter einem Benutzernamen läuft der unabhängig vom
+eingeloggten Benutzer ist, müssten die Userdateien entweder
+world-readable sein, oder group-readable (wobei Apache/PHP dann zur
+entsprechenden users-group zugehörig sein muss). Das würde aber
+bedeuten, daß die User auf die Dateien der anderen User zugreifen
+können. Zudem sind im Falle "world-readable" die Dateien sehr
+ungeschützt, im Falle "group-readable" stellt die allgemeine
+users-Gruppenzugehörigkeit des Apache ein Sicherheitsrisiko dar.
+
+Ohne Anpassung der Dateirechte/Gruppenzugehörigkeit hat nur der
+root-user zugriff auf "fremde" files. Apache/PHP unter root auszuführen
+sollte unter keinen Umständen zur Debatte stehen. (Das weiß natürlich
+jeder, steht hier nur vollständehalber. :-))
+
+Sudo wäre zwar eine Möglichkeit, aber dem Apache sudo-rechte zu
+verleihen bereitet mir auch Bauchschmerzen.
+
+Auch eine sehr simple Möglichkeit, aber nicht viel besser als die sudo-variante, wäre 
+ein als setuid root aufrufbares ls und cat. Um das ganze zu entschärfen 
+könnte man ein eigenes Proggi schreiben, welches Verzeichnis- und Dateiinhalte 
+ausschießlich aus dem /home-Verzeichnis ausgeben kann und dieses dann als 
+setuid root starten.
+
+Falls das System es unterstützt, könnte man mittels ACLs dem Apache/PHP
+Leserechte gewähren. Ist aber intransparent und nicht wirklich
+praktikabel.
+
+Sicherlich alles andere als performant, aber eine relativ sichere
+Möglichkeit wäre der Zugriff via ftp oder scp. PHP könnte die zu
+verarbeitenden Dateien lokal duplizieren und danach bei Bedarf auch
+zurücksschreiben. Wegen des unverschlüsselten Passworts ist ftp
+natürlich unsicher, aber wenn der Benutzer eh via ftp auf seine Dateien
+zugreift, spielt das keine Rolle. Ansonsten halt scp oder einen nur
+lokal erreichbaren ftp-server.
+
+Einen primitiven Workaround (sollte das ganze nur read-only sein) stellt
+ein mirror dar, d.h. mittels cronjob und rsync könnte man die userdaten
+regelmäßig klonen und mit den entsprechenden Leserechten für den
+Apache/PHP versehen. Das Klonen könnte auch direkt beim Login mittels
+eines SetUID-Programms erfolgen, sofern das System es unterstützt.
+
+
+Falls der User möglichst umfangreichen Zugriff auf den eigenen
+Datenbereich haben soll, habe ich folgende (etwas kompliziertere)
+Lösung:
+
+Mittels mod_rewrite wird der Benutzer im Rahmen der
+Apache-Authentifizierung auf eine User-Subdomain umgeleitet (z.B.
+helmut.users.example.com, jeder user hat einen eigenen vhost). Intern
+wird wieder auf das eigentliche Webverzeichnis zurückgeleitet. PHP wird
+in den Apache mittels fastcgi eingebunden; hierbei kann man
+vhost-abhängig einen fcgi-wrapper voranschalten, mit dem einerseits eine
+userabhängige php.ini mit entsprechenden safe-mode-optionen verwendet
+werden kann, sowie mittels der Apache-SuexecUserGroup-Direktive PHP mit
+den jeweiligen Benutzerrechten ausgeführt werden kann. Wenn das System
+ordentlich konfiguriert ist, stellt das eine recht saubere und sichere
+Möglichkeit dar, den User möglichst umfangreich zu unterstützen.

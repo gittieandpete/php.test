@@ -1,0 +1,41 @@
+<?php
+
+function ostersonntag($jahr)   # Ostersonntag nach Gauss
+{
+  $K=0;
+  settype($K,"integer");
+  $jahr = (int) $jahr;
+  $K = $jahr / 100;
+  settype($K,"integer");
+  If($jahr > 1582)
+  {
+    $h = (3 * $K + 3) / 4;
+    settype($h,"integer");
+    $z= ((8 * $K + 13) / 25);
+    settype($z,"integer");
+    $M = 15 + $h - $z;
+    settype($M,"integer");
+    $S = 2 - $h;
+  }
+  else
+  {
+    $M = 15;
+    $S = 0;
+  }
+  $a = $jahr % 19;
+  $b = $jahr / 4;
+  settype($b,"integer");
+  $d = (19 * $a + $M) % 30;
+  $z = $d + $a / 11;
+  settype($z,"integer");
+  $r = $z / 29;
+  settype($r,"integer");
+  $og = 21 + $d - $r;
+  $sz = 7 - (($jahr + $b + $S) % 7);
+  $oe = 7 - (($og - $sz) % 7);
+  (int)$ostersonntag = $og + $oe;
+  $ostern=mktime(0,0,0,3,$ostersonntag,$jahr);
+  return $ostern;
+}
+
+?>
